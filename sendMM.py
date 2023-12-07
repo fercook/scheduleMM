@@ -1,13 +1,14 @@
+import os
 import json
 import sys
 import requests
 
 login_data = {
-    'login_id':'YOURUSERNAME',
-    'password':'YOURPASSWORD'
+    'login_id': os.getenv("MATTERMOST_LOGIN", 'YOURUSERNAME'),
+    'password': os.getenv("MATTERMOST_PASSWORD", 'YOURPASSWORD')
     }
-BASEURL = 'https://yourmattermostserverurl'
-TEAMNAME = 'yourteamname'
+BASEURL = os.getenv("MATTERMOST_SERVER_URL", 'https://yourmattermostserverurl')
+TEAMNAME = os.getenv("MATTERMOST_TEAM_NAME", 'yourteamname')
 
 args = sys.argv
 
