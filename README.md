@@ -1,6 +1,6 @@
 # scheduleMM
 ScheduleMM allows you to schedule posts for later in MatterMost.
-Requires Python
+Requires Python. It is developed for MacOS, but the Python script can be the re-used for Linux or Windows.
 
 In order to use the MacOS app, 
 
