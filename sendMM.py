@@ -28,8 +28,7 @@ me = login.json()['username']
 
 channel_id = None
 if target.find("@")==0:
-from mattermostdriver import Driver
-import json
+
     team = requests.get(f'{BASEURL}/api/v4/teams/name/{TEAMNAME}', headers=headers)
     team_id = team.json()['id']
     team_param = {"in_team": team_id, "per_page": 200}
