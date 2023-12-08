@@ -1,13 +1,14 @@
+import os
 import json
 import sys
 import requests
 
 login_data = {
-    'login_id':'YOURUSERNAME',
-    'password':'YOURPASSWORD'
+    'login_id': os.getenv("MATTERMOST_LOGIN", 'YOURUSERNAME'),
+    'password': os.getenv("MATTERMOST_PASSWORD", 'YOURPASSWORD')
     }
-BASEURL = 'https://yourmattermostserverurl'
-TEAMNAME = 'yourteamname'
+BASEURL = os.getenv("MATTERMOST_SERVER_URL", 'https://yourmattermostserverurl')
+TEAMNAME = os.getenv("MATTERMOST_TEAM_NAME", 'yourteamname')
 
 args = sys.argv
 
@@ -28,8 +29,7 @@ me = login.json()['username']
 
 channel_id = None
 if target.find("@")==0:
-from mattermostdriver import Driver
-import json
+
     team = requests.get(f'{BASEURL}/api/v4/teams/name/{TEAMNAME}', headers=headers)
     team_id = team.json()['id']
     team_param = {"in_team": team_id, "per_page": 200}
